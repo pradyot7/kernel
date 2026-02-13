@@ -1170,6 +1170,8 @@ static int dpu_kms_hw_init(struct msm_kms *kms)
 
 	core_rev = readl_relaxed(dpu_kms->mmio + 0x0);
 
+	pm_runtime_get_sync(&dpu_kms->pdev->dev);
+
 	pr_info("dpu hardware revision:0x%x\n", core_rev);
 
 	dpu_kms->catalog = of_device_get_match_data(dev->dev);
